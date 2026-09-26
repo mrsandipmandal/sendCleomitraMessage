@@ -8,9 +8,9 @@
 require_once __DIR__ . '/CleomitraClient.php';
 
 $client = new CleomitraClient([
-    'api_key' => 'cmk_642d3142cb7cef6a67b30792ae599146',
-    'sender_id' => '827d890e-c1e5-4787-8acb-40bd94c7c3f8',
-    'default_language' => 'en_US'
+    'api_key' => '',
+    'sender_id' => '',
+    'default_language' => ''
 ]);
 
 try {
