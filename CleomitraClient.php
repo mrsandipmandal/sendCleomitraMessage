@@ -41,24 +41,17 @@ class CleomitraClient
      */
     public function __construct(array|string|null $config = null, ?string $senderId = null, ?string $defaultLanguage = null)
     {
-        // Default values (edit these for your setup)
-        $defaultApiKey = 'cmk_642d3142cb7cef6a67b30792ae599146';
-        $defaultSenderId = '827d890e-c1e5-4787-8acb-40bd94c7c3f8'; // +917001789498 (template approved)
-        $defaultLanguage = 'en_US';
 
         if (is_array($config)) {
-            $this->apiKey = $config['api_key'] ?? $defaultApiKey;
-            $this->senderId = $config['sender_id'] ?? $defaultSenderId;
-            $this->defaultLanguage = $config['default_language'] ?? $defaultLanguage;
+            $this->apiKey = $config['api_key'];
+            $this->senderId = $config['sender_id'];
+            $this->defaultLanguage = $config['default_language'];
         } elseif (is_string($config)) {
             $this->apiKey = $config;
-            $this->senderId = $senderId ?? $defaultSenderId;
-            $this->defaultLanguage = $defaultLanguage ?? $defaultLanguage;
-        } else {
-            // No config provided - use all defaults
-            $this->apiKey = $defaultApiKey;
-            $this->senderId = $defaultSenderId;
+            $this->senderId = $senderId;
             $this->defaultLanguage = $defaultLanguage;
+        } else {
+            throw new Exception('Invalid configuration provided. Please provide an API key or a config array.');
         }
 
         if (empty($this->apiKey)) {
